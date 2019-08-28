@@ -6,42 +6,24 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/reg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Register" />
-
-        <Button
-            android:id="@+id/unreg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="UnRegister" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/txtMobile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="phone" />
 
-        <Button
-            android:id="@+id/send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Send" />
-        <Button
-            android:id="@+id/receive"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Receive" />
+    <EditText
+        android:id="@+id/txtMessage"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:ems="10"
+        android:gravity="top"
+        android:inputType="text" />
 
-
-    </LinearLayout>
-
+    <Button
+        android:id="@+id/send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send" />
 </LinearLayout>
