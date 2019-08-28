@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.geekbrains.fedorov.alex.mysmsapplication">
 
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <application
         android:enabled="true"
         android:allowBackup="true"
@@ -17,14 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name="com.geekbrains.fedorov.alex.mysmsapplication.Test"
-            android:exported="true"
-            android:enabled="true">
-            <intent-filter>
-                <action android:name="com.geekbrains.fedorov.alex.mysmsapplication.TestedReceiver"/>
+
+        <receiver
+            android:name=".Test"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter android:priority="999">
+                <action android:name="com.geekbrains.fedorov.alex.mysmsapplication.TestedReceiver" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>

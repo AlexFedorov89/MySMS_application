@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnReg = findViewById(R.id.reg);
         Button btnUnReg = findViewById(R.id.unreg);
 
-        br = new BroadcastReceiver() {
+        /*br = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 String answer = intent.getStringExtra("hello");
@@ -48,19 +48,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 unregisterReceiver(br);
             }
-        });
+        });*/
 
 
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intentSend = new Intent("com.geekbrains.fedorov.alex.mysmsapplication.TestedReceiver");
-                // Тут прочитаем сообщение из бродкаста
+//                 Тут прочитаем сообщение из бродкаста
                 String prima = "test";//intent.getStringExtra("hello");
                 intentSend.putExtra("hello", String.format("Привет %s от TestBroadcastReceiver", prima));
                 intentSend.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
-                // И пошлем новый бродкаст
-                getApplication().sendBroadcast(intentSend);//context.sendBroadcast(intentSend);
+//                 И пошлем новый бродкаст
+                getApplication().sendBroadcast(intentSend);
             }
         });
     }
