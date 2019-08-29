@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == permissionRequestCode) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (grantResults.length > 0 && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                 Toast.makeText(getApplicationContext(), "Спасибо!", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getApplicationContext(),
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         String address = txtMobile.getText().toString();
         String sms_body = txtMessage.getText().toString();
 
-        if (isGranted()) {
+        if (isNotNeedPermission() || isPermissionGranted()) {
 
             try {
                 if (address.isEmpty()){
@@ -84,13 +84,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void requestPermission() {
-        if (!isGranted()) {
+        if (!isPermissionGranted()) {
             final String[] permissions = new String[]{ Manifest.permission.RECEIVE_SMS, Manifest.permission.SEND_SMS};
             ActivityCompat.requestPermissions(this, permissions, permissionRequestCode);
         }
     }
 
-    private boolean isGranted() {
+    private boolean isNotNeedPermission(){
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.M;
+    }
+
+    private boolean isPermissionGranted() {
         return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
                 (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED
                 ));
