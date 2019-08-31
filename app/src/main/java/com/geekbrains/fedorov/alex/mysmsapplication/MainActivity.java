@@ -25,15 +25,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == permissionRequestCode) {
-            if (grantResults.length > 0 && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+            if ((grantResults.length > 0 && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) && (grantResults.length > 1 && (grantResults[1] == PackageManager.PERMISSION_GRANTED))) {
                 Toast.makeText(getApplicationContext(), "Спасибо!", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(getApplicationContext(),
-                        "Извините, приложение без данного разрешения может работать неправильно",
-                        Toast.LENGTH_SHORT).show();
             }
+        } else {
+            Toast.makeText(getApplicationContext(),
+                    "Извините, приложение без данных разрешений может работать неправильно",
+                    Toast.LENGTH_SHORT).show();
         }
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
